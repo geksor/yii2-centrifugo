@@ -7,7 +7,7 @@ use phpcent\ITransport;
 use yii\base\Model;
 
 /**
- * Class Centrifugal
+ * Class Centrifugo
  * @package yii2\centrifugo
  * @property string $host
  * @property string $secret write-only
