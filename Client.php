@@ -1,4 +1,6 @@
-<?php namespace yii2\centrifugo;
+<?php
+
+namespace yii2\centrifugo;
 
 use phpcent\Client as CentrifugoClient;
 use phpcent\ITransport;
@@ -15,79 +17,91 @@ use yii\base\Model;
  */
 class Client extends Model
 {
-	public $host;
-	public $transport;
+    public $host;
+    public $transport;
 
-	/** @var string */
-	protected $_secret;
+    /** @var string */
+    protected $_secret;
 
-	/** @var \phpcent\Client */
-	protected $_client;
+    /** @var string */
+    protected $_apiKey;
 
-	public function initClient()
-	{
-		$this->_client = new CentrifugoClient($this->host);
-		$this->_client->setSecret($this->_secret);
+    /** @var \phpcent\Client */
+    protected $_client;
 
-		if (null === $this->transport) {
-			return;
-		}
+    public function initClient()
+    {
+        $this->_client = new CentrifugoClient($this->host);
+        $this->_client->setApiKey($this->_apiKey);
 
-		$transport = $this->createTransport($this->transport);
+        $this->_client->setSecret($this->_secret);
 
-		if ($transport instanceof ITransport) {
-			$this->_client->setTransport($transport);
-		}
-	}
+        if (null === $this->transport) {
+            return;
+        }
 
-	/**
-	 * @param string $value
-	 */
-	public function setSecret($value)
-	{
-		$this->_secret = $value;
-	}
+        $transport = self::createTransport($this->transport);
 
-	/**
-	 * @return \phpcent\Client
-	 */
-	public function getClient()
-	{
-		if (null === $this->_client) {
-			$this->initClient();
-		}
-		return $this->_client;
-	}
+        if ($transport instanceof ITransport) {
+            $this->_client->setTransport($transport);
+        }
+    }
 
-	/**
-	 * @param $config
-	 * @return object|null
-	 */
-	protected static function createTransport($config)
-	{
-		if (is_array($config) && isset($config['class'])) {
-			$className = $config['class'];
-			unset($config['class']);
-			$instance = new $className;
-			foreach ($config as $key => $value) {
-				if (property_exists($instance, $key)) {
-					$instance->$key = $value;
-				} else {
-					$setter = 'set' . ucfirst($key);
-					$instance->$setter($value);
-				}
-			}
-			return $instance;
-		}
-		return null;
-	}
+    /**
+     * @param string $value
+     */
+    public function setSecret($value)
+    {
+        $this->_secret = $value;
+    }
+    /**
+     * @param string $value
+     */
+    public function setApiKey($value)
+    {
+        $this->_apiKey = $value;
+    }
 
-	public function __call($name, $params)
-	{
-		$client = $this->getClient();
-		if (method_exists($client, $name)) {
-			return call_user_func_array([$client, $name], $params);
-		}
-		return parent::__call($name, $params);
-	}
+    /**
+     * @return \phpcent\Client
+     */
+    public function getClient()
+    {
+        if (null === $this->_client) {
+            $this->initClient();
+        }
+        return $this->_client;
+    }
+
+    /**
+     * @param $config
+     * @return object|null
+     */
+    protected static function createTransport($config)
+    {
+        if (is_array($config) && isset($config['class'])) {
+            $className = $config['class'];
+            unset($config['class']);
+            $instance = new $className;
+            foreach ($config as $key => $value) {
+                if (property_exists($instance, $key)) {
+                    $instance->$key = $value;
+                } else {
+                    $setter = 'set' . ucfirst($key);
+                    $instance->$setter($value);
+                }
+            }
+            return $instance;
+        }
+        return null;
+    }
+
+    public function __call($name, $params)
+    {
+        $client = $this->getClient();
+        if (method_exists($client, $name)) {
+            return call_user_func_array([$client, $name], $params);
+        }
+        return parent::__call($name, $params);
+    }
 }
