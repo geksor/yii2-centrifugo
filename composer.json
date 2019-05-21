@@ -16,6 +16,6 @@
 	},
 	"require": {
 		"yiisoft/yii2": "^2.0",
-		"centrifugal/phpcent": "dev-master"
+		"centrifugal/phpcent": "*"
 	}
 }
