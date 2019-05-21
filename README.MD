@@ -3,11 +3,11 @@ There is a wrapper for [Centrifugo](https://github.com/centrifugal/centrifugo) c
 ## Installation
 Run command in shell
 ```shell
-> php composer.phar require "geksor/yii2-centrifugal"
+> composer require geksor/yii2-centrifugal "dev-master"
 ```
 or add this line in to the `require` section of the `composer.json` file in your project 
 ```json
-"geksor/yii2-centrifugal": "*"
+"geksor/yii2-centrifugal": "dev-master"
 ```
 
 ## Setup
