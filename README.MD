@@ -3,11 +3,11 @@ There is a wrapper for [Centrifugo](https://github.com/centrifugal/centrifugo) c
 ## Installation
 Run command in shell
 ```shell
-> php composer.phar require "betsuno/yii2-centrifugo"
+> php composer.phar require "geksor/yii2-centrifugo"
 ```
 or add this line in to the `require` section of the `composer.json` file in your project 
 ```json
-"betsuno/yii2-centrifugo": "*"
+"geksor/yii2-centrifugo": "*"
 ```
 
 ## Setup
@@ -19,6 +19,7 @@ Add into your config file as following
 		'class'  => 'yii2\centrifugo\Client',
 		'host'   => 'http://localhost:8000',
 		'secret' => 'very-long-secret-key',
+		'apiKey' => 'very-long-api-key',
 		// also you can specify your own transport class as below
 		'transport' => [
 			'class' => 'your\transport\ClassName',
