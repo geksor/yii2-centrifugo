@@ -1,17 +1,16 @@
 {
-	"name": "geksor/yii2-centrifugo",
+	"name": "geksor/yii2-centrifugal",
 	"description": "Centrifugo component for Yii2 framework",
 	"type": "library",
 	"version": "0.1",
 	"authors": [
 		{
-			"name": "Geksor",
-			"email": "geksor@gmail.com"
+			"name": "Geksor"
 		}
 	],
 	"license": "MIT",
 	"autoload": {
-		"psr-4": {
+		"psr-0": {
 			"yii2\\centrifugo\\": ["."]
 		}
 	},
