@@ -1,5 +1,5 @@
 {
-	"name": "betsuno/yii2-centrifugo",
+	"name": "geksor/yii2-centrifugo",
 	"description": "Centrifugo component for Yii2 framework",
 	"type": "library",
 	"version": "0.1",
@@ -17,6 +17,6 @@
 	},
 	"require": {
 		"yiisoft/yii2": "^2.0",
-		"sl4mmer/phpcent": "^1.0"
+		"centrifugal/phpcent": "dev-master"
 	}
 }
