@@ -2,7 +2,7 @@
 	"name": "geksor/yii2-centrifugal",
 	"description": "Centrifugo component for Yii2 framework",
 	"type": "library",
-	"version": "0.1",
+	"version": "dev-master",
 	"authors": [
 		{
 			"name": "Geksor"
@@ -16,6 +16,6 @@
 	},
 	"require": {
 		"yiisoft/yii2": "^2.0",
-		"centrifugal/phpcent": "*"
+		"centrifugal/phpcent": "dev-master"
 	}
 }
