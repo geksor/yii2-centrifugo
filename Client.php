@@ -32,8 +32,8 @@ class Client extends Model
     public function initClient()
     {
         $this->_client = new CentrifugoClient($this->host);
+        
         $this->_client->setApiKey($this->_apiKey);
-
         $this->_client->setSecret($this->_secret);
 
         if (null === $this->transport) {
