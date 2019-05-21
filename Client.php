@@ -22,7 +22,6 @@ class Client extends Model
 
     /** @var string */
     protected $_secret;
-
     /** @var string */
     protected $_apiKey;
 
@@ -54,6 +53,7 @@ class Client extends Model
     {
         $this->_secret = $value;
     }
+    
     /**
      * @param string $value
      */
